@@ -4,6 +4,9 @@ const express = require("express");
 const connectDB = require("./config/db");
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 const userRoutes = require("./routes/userRoutes");
+const reviewRoutes = require("./routes/reviewRoutes");
+const scrapeTrendingBooks = require("./scraper/scraper");
+require("./scheduler");
 
 // creating server
 const app = express();
@@ -23,11 +26,17 @@ app.get("/", (req, res) => {
 
 // userRoutes
 app.use("/user", userRoutes);
+app.use("/reviews", reviewRoutes);
 
 // handling errors like not found and other erros
 app.use(notFound);
 app.use(errorHandler);
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, async () => {
+  try {
+    await scrapeTrendingBooks();
+  } catch (error) {
+    console.log(error);
+  }
   console.log("Server is Started.".bgGreen);
 });
