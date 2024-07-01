@@ -38,6 +38,7 @@ This API provides endpoints to manage book reviews, authenticate users, perform 
 ## API Documentation
 
 For detailed API documentation and usage examples, refer to [API Documentation](https://documenter.getpostman.com/view/27768277/2sA3dvjC6d).
+Please reload,if you can not see documentation link.
 
 ## Deployment
 
@@ -49,7 +50,7 @@ The API is deployed and accessible online at [Book Review Platform](https://book
 - Express.js
 - MongoDB (or your preferred database)
 - JWT (JSON Web Tokens) for authentication
-- Web scraping tools (e.g., Cheerio for scraping)
+- Job Scheduling  tool (e.g., node-cron)
 
 ## Getting Started
 
@@ -60,10 +61,3 @@ To run the project locally, follow these steps:
 3. Set up environment variables (e.g., database connection string, JWT secret).
 4. Run the server: `npm start`.
 
-## Contributing
-
-Contributions are welcome! Please fork the repository and submit pull requests.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
