@@ -1,23 +1,23 @@
 const axios = require("axios");
-const cheerio = require("cheerio");
 const Book = require("../models/bookModal");
 
 const scrapeTrendingBooks = async () => {
-  const response = await axios.get("https://openlibrary.org/trending/daily");
-  const $ = cheerio.load(response.data);
-  
-  const books = [];
+  try {
+    const response = await axios.get("https://openlibrary.org/trending/daily");
+    const books = response.data.works || []; // Assuming books are under response.data.works
 
-  $("a.cover").each((index, element) => {
-    const title = $(element).attr("title");
+    const updatedBooks = books.map((bookData) => {
+      const title = bookData.title;
+      const id = bookData.key.split("/").pop();
 
-    const id = $(element).attr("href").split("/").pop();
+      return { title, key:id };
+    });
 
-    books.push({ title, key: id });
-  });
-
-  for (const book of books) {
-    await Book.findOneAndUpdate({ id: book.id }, book, { upsert: true });
+    for (const book of updatedBooks) {
+      await Book.findOneAndUpdate({ key: book.key }, book, { upsert: true });
+    }
+  } catch (error) {
+    console.error("Error scraping trending books:", error);
   }
 };
 
