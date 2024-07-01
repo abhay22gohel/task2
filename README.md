@@ -39,6 +39,9 @@ This API provides endpoints to manage book reviews, authenticate users, perform 
 
 For detailed API documentation and usage examples, refer to [API Documentation](https://documenter.getpostman.com/view/27768277/2sA3dvjC6d){:target="_blank"}.
 
+For detailed API documentation and usage examples, refer to [API Documentation](https://documenter.getpostman.com/view/27768277/2sA3dvjC6d){:target="_blank"}.
+
+
 ## Deployment
 
 The API is deployed and accessible online at [Book Review Platform](https://bookreview-mu.vercel.app/){:target="_blank"}.
