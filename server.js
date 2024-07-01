@@ -37,7 +37,7 @@ app.use(errorHandler);
 
 app.listen(process.env.PORT, async () => {
   try {
-    // await scrapeTrendingBooks();
+    await scrapeTrendingBooks();
   } catch (error) {
     console.log(error);
   }
