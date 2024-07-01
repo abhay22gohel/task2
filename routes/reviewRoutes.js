@@ -10,8 +10,8 @@ const {
 const router = express.Router();
 
 router.post("/", protect, createReview);
-router.get("/", getReviews);
-router.get("/:id", getReview);
+router.get("/",protect, getReviews);
+router.get("/:id",protect, getReview);
 router.put("/:id", protect, updateReview);
 router.delete("/:id", protect, deleteReview);
 

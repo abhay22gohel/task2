@@ -23,7 +23,9 @@ connectDB();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("hello from server.");
+  res.json({
+    documentation: "https://documenter.getpostman.com/view/27768277/2sA3dvjC6d",
+  });
 });
 
 // userRoutes
